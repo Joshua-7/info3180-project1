@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block main %}
+<h1 class="page-header">Properties</h1>
+
+{% include 'flash_messages.html' %}
+<div class="Listing">
+{%for i in propert%}
+    <img src="{{url_for('get_image',filename=i.img)}}" alt="{{i.img}}" class="art" />
+    <p>{{i.description}}</p>
+    <p>{{i.location}}</p>
+    <p>{{i.price}}</p>
+    <button type="submit" name="submit" class="btn btn-primary btn-block">View Property</button>
+{% endfor %} 
+</div>
+{% endblock %}
