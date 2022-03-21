@@ -10,7 +10,7 @@ import os
 from app.forms import PropertyForm
 from app.models import Property
 from werkzeug.utils import secure_filename
-from flask import render_template, request, redirect, url_for,flash
+from flask import render_template, request, redirect, url_for,flash,send_from_directory
 
 
 ###
@@ -57,22 +57,18 @@ def create():
 
 @app.route('/properties')
 def properties():
-    return render_template('properties.html')    
+    print(Property.query.all()[0].img)
+    return render_template('properties.html',propert = Property.query.all(),get_image= get_image)
 
-@app.route('/properties/<propertyid>')
+    
+@app.route('/properties/<filename>')   
+def get_image(filename):
+    di = os.path.join(os.getcwd(),app.config['UPLOAD_FOLDER'])
+    return send_from_directory(directory=di, path=filename)
+
+@app.route('/properties/<id>')
 def propertyview():
-    return render_template('propertyview.html')
-
-def get_upload_image():
-    filelist = []
-    rootdir = os.getcwd()
-    print (rootdir)
-    for subdir, dirs, files in os.walk(rootdir + '/uploads'):
-        for f in files:
-             ext = os.path.splitext(f)[-1].lower()
-             if ext =='.png'or ext =='.jpg':
-                filelist.append(f)
-    return filelist    
+    return render_template('propertyview.html')    
 
 # Display Flask WTF errors as Flash messages
 def flash_errors(form):
