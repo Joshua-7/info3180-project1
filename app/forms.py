@@ -13,4 +13,4 @@ class PropertyForm(FlaskForm):
     proptypes=["House","Appartment","Open Lot","Commercial"]
     proptype = SelectField('Proptype', validators=[InputRequired()], choices=proptypes)
     description = TextAreaField('Description', validators=[InputRequired()])
-    img =FileField('Image', validators=[FileRequired(), FileAllowed(['jpg', 'png'], 'Images only!')])
+    img =FileField('Image', validators=[FileRequired(), FileAllowed(['jpg', 'png','jpeg'], 'Images only!')])

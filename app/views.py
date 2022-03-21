@@ -5,7 +5,7 @@ Werkzeug Documentation:  https://werkzeug.palletsprojects.com/
 This file creates your application.
 """
 
-from app import app
+from app import app, db
 import os
 from app.forms import PropertyForm
 from app.models import Property
@@ -43,10 +43,13 @@ def create():
             Bathrooms = form.bathrooms.data
             Location = form.location.data
             Price = form.price.data
-            Proptype = form.proptype.data
+            Proptype = form.proptype.data 
             Description = form.description.data
             filename = secure_filename(form.img.data.filename)
             form.img.data.save(app.config['UPLOAD_FOLDER']+'/'+filename)
+            prop = Property(Title,Bedrooms,Bathrooms,Location,Price,Proptype,Description,filename)
+            db.session.add(prop)
+            db.session.commit()
             flash('Property Registered', 'success')
             return redirect(url_for('home'))
 
