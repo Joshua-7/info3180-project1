@@ -6,7 +6,11 @@ This file creates your application.
 """
 
 from app import app
-from flask import render_template, request, redirect, url_for
+import os
+from app.forms import PropertyForm
+from app.models import Property
+from werkzeug.utils import secure_filename
+from flask import render_template, request, redirect, url_for,flash
 
 
 ###
@@ -28,6 +32,44 @@ def about():
 ###
 # The functions below should be applicable to all Flask apps.
 ###
+
+@app.route('/properties/create', methods=["GET", "POST"])
+def create():
+    form = PropertyForm()
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            Title = form.title.data
+            Bedrooms = form.bedrooms.data
+            Bathrooms = form.bathrooms.data
+            Location = form.location.data
+            Price = form.price.data
+            Proptype = form.proptype.data
+            Description = form.description.data
+            filename = secure_filename(form.img.data.filename)
+            form.img.data.save(app.config['UPLOAD_FOLDER']+'/'+filename)
+            flash('Property Registered', 'success')
+            return redirect(url_for('home'))
+
+    return render_template('create.html',form=form)
+
+@app.route('/properties')
+def properties():
+    return render_template('properties.html')    
+
+@app.route('/properties/<propertyid>')
+def propertyview():
+    return render_template('propertyview.html')
+
+def get_upload_image():
+    filelist = []
+    rootdir = os.getcwd()
+    print (rootdir)
+    for subdir, dirs, files in os.walk(rootdir + '/uploads'):
+        for f in files:
+             ext = os.path.splitext(f)[-1].lower()
+             if ext =='.png'or ext =='.jpg':
+                filelist.append(f)
+    return filelist    
 
 # Display Flask WTF errors as Flash messages
 def flash_errors(form):
