@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block main %}
+<img src="{{url_for('get_image',filename=pr.img)}}" alt="{{pr.img}}" class="art" />
+<p>{{pr.title}}</p>
+<p>{{pr.price}}</p>
+<p>{{pr.proptype}}</p>
+<p>{{pr.description}}</p>
+<p>{{pr.bedrooms}} Bedroom(s)</p>
+<p>{{pr.bathrooms}} Bathroom(s)</p>
+<p>{{pr.location}}</p>
+{% endblock %}

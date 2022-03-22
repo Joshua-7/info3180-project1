@@ -61,14 +61,14 @@ def properties():
     return render_template('properties.html',propert = Property.query.all(),get_image= get_image)
 
     
-@app.route('/properties/<filename>')   
+@app.route('/img/<filename>')   
 def get_image(filename):
     di = os.path.join(os.getcwd(),app.config['UPLOAD_FOLDER'])
     return send_from_directory(directory=di, path=filename)
 
-@app.route('/properties/<id>')
-def propertyview():
-    return render_template('propertyview.html')    
+@app.route('/properties/<propertyid>')
+def propertyview(propertyid):
+    return render_template('propertyview.html',pr= Property.query.get(propertyid),get_image= get_image)    
 
 # Display Flask WTF errors as Flash messages
 def flash_errors(form):
