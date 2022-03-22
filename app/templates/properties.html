@@ -4,13 +4,18 @@
 <h1 class="page-header">Properties</h1>
 
 {% include 'flash_messages.html' %}
-<div class="Listing">
-{%for i in propert%}
-    <img src="{{url_for('get_image',filename=i.img)}}" alt="{{i.img}}" class="art" />
-    <p>{{i.title}}</p>
-    <p>{{i.location}}</p>
-    <p>{{i.price}}</p>
-    <a class="nav-link" href="{{ url_for('propertyview',propertyid=i.id)}}">View Property</a>
-{% endfor %} 
+<div class="box">
+    {%for i in propert%}
+    <div class="cards">
+        <img src="{{url_for('get_image',filename=i.img)}}" alt="{{i.img}}" class="art" />
+        <div class="card-body">
+          <h5 class="card-title">{{i.title}}</h5>
+          <p class="card-text">{{i.location}}</p>
+          <span class="card-text" id="pric">{{i.price}}</span>
+          <a class="prop-link" href="{{ url_for('propertyview',propertyid=i.id)}}">View Property</a>
+        </div>
+      </div>
+      {% endfor %} 
 </div>
 {% endblock %}
+

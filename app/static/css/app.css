@@ -1,3 +1,104 @@
 body {
     padding-top: 5rem;
+    background-color: rgb(248, 239, 239);
+}
+
+.createform {
+    display: grid;
+    grid-template-columns: 400px 400px;
+    grid-gap: 20px;
+    padding: 30px;
+    margin-right: 250px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+#title {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    width: 820px; 
+    height: 35px;
+}
+#desc {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+#pic {
+    grid-row-start: 6;
+}
+
+#sub {
+    grid-row-start: 7;
+    width: 150px; 
+    height: 35px;
+}
+
+.art
+{
+    width: 100%;
+    height: 214px;
+}
+
+.card.mb-3
+{
+    max-width: 100%;
+    padding:10px;
+}
+
+.cards
+{
+    width: 25rem;
+    background-color: white;
+}
+
+.arts
+{
+    width: 100%;
+    height: 100%;
+}
+
+.box {
+    display: grid; 
+    grid-template-columns: repeat(3,1fr);
+    grid-auto-rows: auto;
+    grid-gap: 1rem;
+    padding: 30px;
+}
+
+#pric {
+    background-color:rgb(52, 136, 245);
+    border-radius: 15px;
+    padding: 5px;
+    color: white;
+}
+
+#propt {
+    background-color:rgb(214, 166, 7);
+    border-radius: 15px;
+    padding: 5px;
+    color: white;
+}
+
+.prop-link {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    width: 150px; 
+    height: 35px;
+    padding-top: 5px;
+    background-color:#20c997;
+}
+
+#propt{
+    padding-left: 5px;
+}
+
+.ba{
+    padding-left: 5px;
+}
+
+.card-text{
+    padding:10px;
 }

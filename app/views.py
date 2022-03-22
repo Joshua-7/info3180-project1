@@ -51,7 +51,7 @@ def create():
             db.session.add(prop)
             db.session.commit()
             flash('Property Registered', 'success')
-            return redirect(url_for('home'))
+            return redirect(url_for('properties'))
 
     return render_template('create.html',form=form)
 

@@ -6,39 +6,41 @@
     {% include 'flash_messages.html' %}
     <form action="{{ url_for('create') }}" method="post" enctype="multipart/form-data">
       {{ form.csrf_token }}
-      <div class="form-group">
-        {{ form.title.label }}
-        {{ form.title(class='form-control', placeholder="Please enter a title") }}
+      <div class="createform">
+        <div class="form-group" ID="tite">
+          {{ form.title.label }}
+          {{ form.title(class='form-control', placeholder="Please enter a title") }}
+        </div>
+        <div class="form-group" ID="desc">
+          {{ form.description.label }}
+          {{ form.description(class='form-control',placeholder= "Description of property") }}
+        </div>
+        <div class="form-group" ID="bed">
+          {{ form.bedrooms.label }}
+          {{ form.bedrooms(class='form-control',placeholder= 3) }}
+        </div>
+        <div class="form-group" ID="bath">
+          {{ form.bathrooms.label }}
+          {{ form.bathrooms(class='form-control',placeholder= 2) }}
+        </div>
+        <div class="form-group" ID="pri">
+          {{ form.price.label }}
+          {{ form.price(class='form-control',placeholder= 20000000.00) }}
+        </div>
+        <div class="form-group" ID="type">
+          {{ form.proptype.label }}
+          {{ form.proptype(class='form-control')}}
+        </div>
+        <div class="form-group" ID="loc">
+          {{ form.location.label }}
+          {{ form.location(class='form-control',placeholder= "Portmore") }}
+        </div>
+        <div class="form-group" ID="pic">
+          {{ form.img.label }}
+          {{ form.img()}}
+        </div>
+        <button type="submit" name="submit" class="btn btn-primary btn-block" id="sub">Add Property</button>
       </div>
-      <div class="form-group">
-        {{ form.description.label }}
-        {{ form.description(class='form-control',placeholder= "Description of property") }}
-      </div>
-      <div class="form-group">
-        {{ form.bedrooms.label }}
-        {{ form.bedrooms(class='form-control',placeholder= 3) }}
-      </div>
-      <div class="form-group">
-        {{ form.bathrooms.label }}
-        {{ form.bathrooms(class='form-control',placeholder= 2) }}
-      </div>
-      <div class="form-group">
-        {{ form.location.label }}
-        {{ form.location(class='form-control',placeholder= "Portmore") }}
-      </div>
-      <div class="form-group">
-        {{ form.price.label }}
-        {{ form.price(class='form-control',placeholder= 20000000.00) }}
-      </div>
-      <div class="form-group">
-        {{ form.proptype.label }}
-        {{ form.proptype(class='form-control')}}
-      </div>
-      <div class="form-group">
-        {{ form.img.label }}
-        {{ form.img()}}
-      </div>
-      <button type="submit" name="submit" class="btn btn-primary btn-block">Register Property</button>
     </form>
   </div>
 {% endblock %}

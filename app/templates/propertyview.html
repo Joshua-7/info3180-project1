@@ -1,12 +1,31 @@
 {% extends "base.html" %}
 
 {% block main %}
-<img src="{{url_for('get_image',filename=pr.img)}}" alt="{{pr.img}}" class="art" />
-<p>{{pr.title}}</p>
-<p>{{pr.price}}</p>
-<p>{{pr.proptype}}</p>
-<p>{{pr.description}}</p>
-<p>{{pr.bedrooms}} Bedroom(s)</p>
-<p>{{pr.bathrooms}} Bathroom(s)</p>
-<p>{{pr.location}}</p>
+    <div class="card mb-3">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="{{url_for('get_image',filename=pr.img)}}" alt="{{pr.img}}" class="arts" />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{pr.title}}</h5>
+              <div class="end">
+                <span class="card-text"id="pric">{{pr.price}}</span>
+                &nbsp;
+                <span class="card-text"id="propt">{{pr.proptype}}</span>
+              </div>
+              <p class="card-text">{{pr.description}}</p>
+              <div class="end2">
+                <span class="card-text">{{pr.bedrooms}} Bedrooms</span>
+                &nbsp;
+                <span class="card-text"id="ba">{{pr.bathrooms}} Bathrooms</span>
+              </div>
+              <p class="card-text">{{pr.location}}</p>
+              <a class="prop-link" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Email Realtor</a>
+            </div>
+          </div>
+        </div>
+    </div>
 {% endblock %}
+
+
